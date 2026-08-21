@@ -9,11 +9,14 @@ from app.models.user import User
 from app.models.project import Project
 from app.models.project_member import ProjectMember
 from app.models.task import Task
+from app.routers.auth import router
 
 
 Base.metadata.create_all(bind=engine)
 
+
 app = FastAPI(docs_url="/")
+app.include_router(router)
 
 
 app.add_exception_handler(HTTPException, http_exception_handler)
