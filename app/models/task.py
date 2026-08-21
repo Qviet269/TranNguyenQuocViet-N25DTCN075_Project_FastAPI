@@ -11,7 +11,10 @@ class Task(Base):
     title = Column(String(255), nullable=False)
     description = Column(Text, nullable=True)
 
-    status = Column(String(50), nullable=False, default="todo")
+    status = Column(String(50), nullable=False, default="TODO")
+    priority = Column(String(50), nullable=False, default="LOW")
+
+    due_date = Column(DateTime(timezone=True), nullable=True)
 
     project_id = Column(Integer, ForeignKey("projects.id"), nullable=False)
     assignee_id = Column(Integer, ForeignKey("users.id"), nullable=True)
